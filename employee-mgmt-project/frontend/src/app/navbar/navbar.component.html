@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <span routerLink="/" style="cursor: pointer;">EmployeeManager</span>
+  
+    <span class="spacer"></span>
+  
+    <ng-container *ngIf="auth.isLoggedIn(); else guestLinks">
+      <button mat-button routerLink="/employees">Employees</button>
+      <button mat-button color="warn" (click)="logout()">Logout</button>
+    </ng-container>
+  
+    <ng-template #guestLinks>
+      <button mat-button routerLink="/login">Login</button>
+      <button mat-button routerLink="/signup">Signup</button>
+    </ng-template>
+  </mat-toolbar>
+  <router-outlet></router-outlet>

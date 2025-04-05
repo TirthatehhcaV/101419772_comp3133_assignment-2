@@ -1,0 +1,18 @@
+<div class="form-card" *ngIf="employee$ | async as emp">
+  <h2>Employee Details</h2>
+
+  <div class="readonly-grid">
+    <div class="readonly-field"><strong>Full Name:</strong> {{ emp.first_name }} {{ emp.last_name }}</div>
+    <div class="readonly-field"><strong>Email:</strong> {{ emp.email }}</div>
+    <div class="readonly-field"><strong>Gender:</strong> {{ emp.gender }}</div>
+    <div class="readonly-field"><strong>Designation:</strong> {{ emp.designation }}</div>
+    <div class="readonly-field"><strong>Department:</strong> {{ emp.department }}</div>
+    <div class="readonly-field"><strong>Salary:</strong> ₹{{ emp.salary }}</div>
+    <div class="readonly-field"><strong>Date of Joining:</strong> {{ emp.date_of_joining }}</div>
+  </div>
+
+  <div class="image-section" *ngIf="emp.employee_photo">
+    <h5>Image Preview:</h5>
+    <img [src]="emp.employee_photo" class="preview" />
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="login()" #loginForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" [(ngModel)]="password" name="password" required />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Login</button>
+
+    <div class="error-message" *ngIf="error">{{ error }}</div>
+  </form>
+
+  <a routerLink="/signup" style="display: inline-block; margin-top: 1rem; text-align: center;">
+    Don't have an account? <strong>Signup</strong>
+  </a>
+</div>

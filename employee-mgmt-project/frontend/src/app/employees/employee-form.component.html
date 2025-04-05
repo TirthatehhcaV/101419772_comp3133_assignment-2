@@ -1,0 +1,95 @@
+<div class="form-card">
+  <h2>{{ isEditMode ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="row g-3">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="first_name" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="last_name" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option *ngFor="let gender of genderOptions" [value]="gender">
+            {{ gender }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Designation</mat-label>
+        <input matInput formControlName="designation" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Salary</mat-label>
+        <input matInput type="number" formControlName="salary" />
+        <mat-error *ngIf="employeeForm.get('salary')?.hasError('required')">
+          Salary is required.
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('salary')?.hasError('min')">
+          Salary must be at least $1000.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    
+
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Date of Joining</mat-label>
+        <input matInput type="date" formControlName="date_of_joining" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Employee Image URL</mat-label>
+        <input matInput formControlName="employee_photo" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-md-12" *ngIf="imagePreview">
+      <h5>Image Preview:</h5>
+      <img [src]="imagePreview" class="preview" />
+    </div>
+
+    <div class="col-md-12">
+      <div *ngIf="formError" class="error-message">
+        {{ formError }}
+      </div>
+      
+      <button mat-raised-button type="submit">
+        {{ isEditMode ? 'Update' : 'Add' }} Employee
+      </button>
+    </div>
+  </form>
+</div>
