@@ -158,10 +158,9 @@ vercel --prod
 ---
 
 ## 📸 Screenshots
+ Successfully added in a separate zip folder
 
-> _Insert screenshots here for signup, list, detail view, and form_
 
----
 
 ## ✅ .gitignore Sample
 
